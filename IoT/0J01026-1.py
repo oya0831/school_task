@@ -41,5 +41,3 @@ while 1:
     time.sleep(2)
     #全部消す
     delete()
-    number+=1
-number=1
