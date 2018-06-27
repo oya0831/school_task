@@ -13,18 +13,12 @@ GPIO.setup(SW,GPIO.IN)
 for num in range(len(PIN)):
   GPIO.setup(PIN[num],GPIO.OUT)
 
-def delete():
-  for num in range(len(PIN)):
-    GPIO.output(PIN[num],GPIO.LOW)
-
-delete()
 GPIO.output(PIN[0],GPIO.HIGH)
 pygame.mixer.init()
 pygame.mixer.music.load(sounds[0])
 
 while 1:
   if GPIO.input(SW)==True:
-      print('通りました')
       time.sleep(2)
       GPIO.output(PIN[0],GPIO.LOW)
       GPIO.output(PIN[1],GPIO.HIGH)
