@@ -6,7 +6,6 @@ PIN=[21,20,16,12]
 
 #GPIO番号で指定
 GPIO.setmode(GPIO.BCM)
-
 #GPIOのセットアップ
 for num in range(len(PIN)):
   GPIO.setup(PIN[num],GPIO.OUT)
