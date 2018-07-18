@@ -3,7 +3,7 @@
 # すべてのセグメントを1秒ごとに点灯、消灯する
 
 import RPi.GPIO as GPIO
-import time
+import time,datetime,math
 
 # 7セグメントLEDとGPIOポートの対応付け
 LED_A=25
@@ -39,12 +39,25 @@ for i in PIN:
 for i in PIN:
     GPIO.output(i,OFF)
       
-while True:
-  for i in DATA:
-      for j in PIN:
-           if i & 0x80==0x80:
-              GPIO.output(j,ON)
-           else:
-              GPIO.output(j,OFF)
-           i<<=1
-      time.sleep(1)
+#while True:
+date=datetime.datetime.now()
+clock=[]
+clock.append(date.second)
+clock.append(date.minute)
+clock.append(date.hour)
+formatClock=[]
+num=clock
+
+for i in range(len(clock)):
+  while clock[i]!=0:
+    formatClock[i].append(clock[i]%10)
+    clock[i]=int(clock[i]/10)
+    #formatClock.reverse()
+print(formatClock)
+  
+#  for j in PIN:
+#        if i & 0x80==0x80:
+#              GPIO.output(j,ON)
+#        else:
+#              GPIO.output(j,OFF)
+#      time.sleep(1)
